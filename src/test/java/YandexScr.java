@@ -14,9 +14,9 @@ public class YandexScr {
     @Before
     public void before() {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        driver = new ChromeDriver();//инициализируем драйвер
-        baseUrl = "https://yandex.ru";//инициализация переменной имени сайта
-        driver.manage().window().maximize();//делаем браузер на весь экран
+        driver = new ChromeDriver();
+        baseUrl = "https://yandex.ru";
+        driver.manage().window().maximize();
     }
 
     @Test
