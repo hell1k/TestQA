@@ -16,7 +16,6 @@ public class FirstTest {//объявление класса(имя класса 
         driver = new ChromeDriver();//инициализируем драйвер
         baseUrl = "https://yandex.ru";//инициализация переменной имени сайта
         driver.manage().window().maximize();//делаем браузер на весь экран
-
     }
 
     @Test
