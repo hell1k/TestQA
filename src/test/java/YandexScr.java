@@ -1,9 +1,10 @@
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.apache.commons.io.FileUtils;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -11,7 +12,7 @@ public class YandexScr {
     public WebDriver driver;
     public String baseUrl;
 
-    @Before
+    @BeforeTest
     public void before() {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         driver = new ChromeDriver();
@@ -35,7 +36,7 @@ public class YandexScr {
         }
     }
 
-    @After
+    @AfterTest
     public void quit() {
         driver.quit();
     }

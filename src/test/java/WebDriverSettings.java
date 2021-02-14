@@ -1,8 +1,8 @@
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,7 +10,7 @@ public class WebDriverSettings {
     public WebDriver driver;
     public WebDriverWait wait;
 
-    @Before
+    @BeforeTest
     public void setup() {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         driver = new ChromeDriver();
@@ -19,7 +19,7 @@ public class WebDriverSettings {
         driver.manage().window().maximize();
     }
 
-    @After
+    @AfterTest
     public void close() {
         driver.quit();
     }
