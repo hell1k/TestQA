@@ -44,20 +44,24 @@ public class SortByPricePage {
     }
 
     public void sortingByPrice(String increaseOrDecrease) {
-        List<WebElement> linkListPrice = driver.findElements(By.xpath("//div[@class='catalog__item-price' and @itemprop='price']"));
-        List<WebElement> linkListPriceNew = driver.findElements(By.xpath("//div[@class='catalog__item-price-new']"));
+        int amount = Integer.parseInt(goodsAmount.getText().replaceAll("[^\\d.]", ""));
         List<Integer> priceList = new ArrayList<Integer>();
 
-        for (int i = 0; i < linkListPrice.size(); i++) {
-            String listPrice = linkListPrice.get(i).getText().replaceAll("₽", "").replaceAll(" ", "");
-            int priceInt = Integer.parseInt(listPrice);
-            priceList.add(priceInt);
-        }
+        String attribute;
+        String listPrice;
 
-        for (int i = 0; i < linkListPriceNew.size(); i++) {
-            String listPrice = linkListPriceNew.get(i).getText().replaceAll("₽", "").replaceAll(" ", "");
-            int priceInt = Integer.parseInt(listPrice);
-            priceList.add(priceInt);
+        for (int i = 1; i <= amount; i++) {
+            attribute = driver.findElement(By.xpath("(//div[@class='catalog__item-price'])[" + i + "]")).getAttribute("itemprop");
+
+            if (attribute.equals("offers")){
+                listPrice = driver.findElement(By.xpath("(//div[@class='catalog__item-price'])[" + i + "]//div[@class='catalog__item-price-new']")).getText().replaceAll("[^\\d.]", "");
+                int priceInt = Integer.parseInt(listPrice);
+                priceList.add(priceInt);
+            } else {
+                listPrice = driver.findElement(By.xpath("(//div[@class='catalog__item-price'])[" + i + "]")).getText().replaceAll("[^\\d.]", "");
+                int priceInt = Integer.parseInt(listPrice);
+                priceList.add(priceInt);
+            }
         }
 
         int minPrice = Collections.min(priceList);
@@ -74,7 +78,6 @@ public class SortByPricePage {
             Assert.assertTrue(catalogTitle.getText().contains("премиум"), "Несоответствие");
         }
 
-        int amount = Integer.parseInt(goodsAmount.getText().replaceAll("[^\\d.]", ""));
         String firstAttribute = driver.findElement(By.xpath("(//div[@class='catalog__item-price'])[1]")).getAttribute("itemprop");
         String lastAttribute = driver.findElement(By.xpath("(//div[@class='catalog__item-price'])[" + amount + "]")).getAttribute("itemprop");
 
@@ -93,9 +96,6 @@ public class SortByPricePage {
         } else {
             last = Integer.parseInt(driver.findElement(By.xpath("(//div[@class='catalog__item-price'])[" + amount + "]")).getText().replaceAll("[^\\d.]", ""));
         }
-
-        System.out.println(first);
-        System.out.println(last);
 
         if (increaseOrDecrease.equals("increase")) {
             Assert.assertEquals(first, minPrice);

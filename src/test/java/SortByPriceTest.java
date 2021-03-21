@@ -1,7 +1,6 @@
 import org.junit.Test;
 
 public class SortByPriceTest extends WebDriverSettings {
-
     final String URL = "https://lgcity.ru/shoes/keds/women/";
     SortByPricePage sortByPricePage;
 
