@@ -13,12 +13,13 @@ public class FirstTest {//объявление класса(имя класса 
     @BeforeTest
     public void before() {//метод, в котором происходит что то до старта тестов (аннотация @Before)
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");//путь к хромдрайверу(лежит в корне, поэтому просто название)
-        driver = new ChromeDriver();//инициализируем драйвер
+        driver = new ChromeDriver();//и нициализируем драйвер
         baseUrl = "https://yandex.ru";//инициализация переменной имени сайта
         driver.manage().window().maximize();//делаем браузер на весь экран
     }
 
     @Test
+
     public void first() {//метод, в котором идет сам тест (аннотация @Test)
         driver.get(baseUrl);//команда get откроет сайт, который хранит переменная baseUrl
     }
