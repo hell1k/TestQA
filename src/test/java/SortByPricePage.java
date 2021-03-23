@@ -49,19 +49,19 @@ public class SortByPricePage {
 
         String attribute;
         String listPrice;
+        int priceInt;
 
         for (int i = 1; i <= amount; i++) {
             attribute = driver.findElement(By.xpath("(//div[@class='catalog__item-price'])[" + i + "]")).getAttribute("itemprop");
 
-            if (attribute.equals("offers")){
+            if (attribute.equals("offers")) {
                 listPrice = driver.findElement(By.xpath("(//div[@class='catalog__item-price'])[" + i + "]//div[@class='catalog__item-price-new']")).getText().replaceAll("[^\\d.]", "");
-                int priceInt = Integer.parseInt(listPrice);
-                priceList.add(priceInt);
             } else {
                 listPrice = driver.findElement(By.xpath("(//div[@class='catalog__item-price'])[" + i + "]")).getText().replaceAll("[^\\d.]", "");
-                int priceInt = Integer.parseInt(listPrice);
-                priceList.add(priceInt);
             }
+
+            priceInt = Integer.parseInt(listPrice);
+            priceList.add(priceInt);
         }
 
         int minPrice = Collections.min(priceList);
