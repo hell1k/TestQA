@@ -29,10 +29,6 @@ public class CityPage {
     @FindBy(xpath = "//a[@class='locate__popular-list-item']")
     WebElement popularCity;
 
-    public void open(String url) {
-        driver.get(url);
-    }
-
     public void city(String city) throws InterruptedException {
         cityInHeader.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='Название населенного пункта']")));

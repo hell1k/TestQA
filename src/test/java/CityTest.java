@@ -8,7 +8,7 @@ public class CityTest extends WebDriverSettings{
     @Test
     public void city() throws InterruptedException {
         cityPage = new CityPage(driver, wait);
-        cityPage.open(URL);
+        open(URL);
         cityPage.city(city);
     }
 }
