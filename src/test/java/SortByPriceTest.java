@@ -8,6 +8,7 @@ public class SortByPriceTest extends WebDriverSettings {
     public void sortByPrice(){
         sortByPricePage = new SortByPricePage(driver, wait);
         sortByPricePage.open(URL);
-        sortByPricePage.sortingByPrice("decrease");
+        sortByPricePage.sortingByPrice("decrease");//функция для проверки фильтра цены по возрастанию (increase) или убыванию (decrease)
+        System.out.println("Successful sorting");
     }
 }
