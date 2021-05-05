@@ -1,28 +1,20 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
-public class Test {
-    WebDriver driver;
+public class Test2 {
 
-    @org.testng.annotations.Test
-    public void firstTest(){
+    WebDriver driver;
+    public void test1(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
         driver.get("https://ya.ru");
+        driver.findElement(By.name("123")).click();
         driver.quit();
-    }
-
-    public void test1(){
-        Assert.assertEquals(4, 2*2);
-    }
-
-    public void test2(){
-        Assert.assertEquals(5, 2*2);
     }
 }
