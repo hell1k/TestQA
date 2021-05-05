@@ -19,6 +19,10 @@ public class WebDriverSettings {
         driver.manage().window().maximize();
     }
 
+    public void open(String url){
+        driver.get(url);
+    }
+
     @After
     public void close() {
         driver.quit();
