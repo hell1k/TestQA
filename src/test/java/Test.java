@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 public class Test {
     WebDriver driver;
 
-    @org.junit.Test
+    @org.testng.annotations.Test
     public void firstTest(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         driver = new ChromeDriver();
@@ -15,5 +15,6 @@ public class Test {
 
         driver.get("https://ya.ru");
         driver.quit();
+
     }
 }
